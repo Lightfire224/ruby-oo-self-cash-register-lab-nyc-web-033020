@@ -2,13 +2,12 @@ class CashRegister
   attr_accessor :total
   attr_reader :discount
   attr_reader :items_list
-  attr_accessor :last_price
+  attr_accessor :last_total
   
   def initialize(discount=nil)
     @total = 0
     @discount = discount
     @items_list = []
-    @last_price = nil
   end
   
   # def discount
@@ -30,8 +29,8 @@ class CashRegister
       @items_list << title
       counter += 1
     end
-    
-
+  
+    @last_total = price * quantity
   end
   
   def apply_discount
@@ -49,7 +48,7 @@ class CashRegister
   end
   
   def void_last_transaction
-    @last_price
+    @total = @total - @last_total
   end
   
 end
