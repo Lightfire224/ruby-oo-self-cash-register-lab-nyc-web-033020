@@ -24,10 +24,14 @@ class CashRegister
   
   def add_item(title, price, quantity=1)
     @total += price * quantity
-    counter = 0
-    while counter < quantity
+    # counter = 0
+    # while counter < quantity
+    #   @items_list << title
+    #   counter += 1
+    # end
+    
+    quantity.times do
       @items_list << title
-      counter += 1
     end
   
     @last_total = price * quantity
